@@ -1,6 +1,10 @@
 package Selection;
 
+import java.util.Collection;
+
+import Model.Individual;
+
 public interface ISelectionStrategy {
 
-	public void Selection();
+	public Collection<Individual> Selection();
 }
