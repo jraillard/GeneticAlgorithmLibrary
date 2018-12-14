@@ -2,6 +2,7 @@ package Template;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.function.Function;
 
 import Builder.IPopulationBuilder;
@@ -29,9 +30,10 @@ public abstract class GeneticTemplate {
 		_populationBuilder = new PopulationBuilder();
 	}
 	
-	public Collection<Individual> Compute(
+	public List<Individual> Compute(
 			Individual individualModel,
 			int populationCount,
+			int childrenToGenerate,
 			SelectionEnum selectionStrategy,
 			ReplaceEnum replaceStrategy,
 			Function<Individual[], Individual[]> crossBeedingFunc,
@@ -40,7 +42,7 @@ public abstract class GeneticTemplate {
 	{
 
 		//1. Population init
-		Collection<Individual> returnedPopulation = new ArrayList<>();
+		List<Individual> population = _populationBuilder.BuildPopulation(individualModel, populationCount);
 		
 		//2. Strategy init
 		// TODO : à voir s'il ne faut pas gérer les switch ailleurs...
@@ -53,7 +55,7 @@ public abstract class GeneticTemplate {
 				_selectionStrategy = new RandomSelectionStrategy();
 				break;
 			default : 
-				return returnedPopulation;				
+				return population;				
 		}
 		
 		switch(replaceStrategy)
@@ -65,28 +67,27 @@ public abstract class GeneticTemplate {
 				_replaceStrategy = new RandomReplaceStrategy();
 				break;
 			default :
-					return returnedPopulation;		
+					return population;		
 		}
 		
 		
 		int iterationCounter = 0;
-		Collection<Individual> selectedPop = null;
+		List<Individual> selectedPop = null;
 		while(iterationCounter < stopIteMax)
 		{
-			returnedPopulation = Evaluate(returnedPopulation);
+			population = Evaluate(population);
 			
-			selectedPop = _selectionStrategy.Selection();
+			selectedPop = _selectionStrategy.Selection(population, childrenToGenerate+1);
 			
 			/* CrossBeed, Mutation and Replace */
 		}
 		
-		return returnedPopulation;
+		return population;
 	}
 	
 		
-	public abstract Collection<Individual> Evaluate(Collection<Individual> population);		
-	public abstract Collection<Individual> CrossBeed(Collection<Individual> selectedPopulation);
-	public abstract Collection<Individual> Mutate(Collection<Individual> selectedPopulation);
-	
-	public abstract void Replace();
+	public abstract List<Individual> Evaluate(List<Individual> population);		
+	public abstract List<Individual> CrossBeed(List<Individual> selectedPopulation);
+	public abstract List<Individual> Mutate(List<Individual> selectedPopulation);	
+	public abstract List<Individual> Replace(List<Individual> newIndividuals, List<Individual> population);
 }

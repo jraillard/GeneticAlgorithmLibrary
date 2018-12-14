@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Comparator;
+
 public abstract class Individual {
 
 	protected float _fitness;

@@ -1,10 +1,11 @@
 package Builder;
 
 import java.util.Collection;
+import java.util.List;
 
 import Model.Individual;
 
 public interface IPopulationBuilder {
 
-	public Collection<Individual> BuildPopulation(Individual model, int populationCount);
+	public List<Individual> BuildPopulation(Individual model, int populationCount);
 }

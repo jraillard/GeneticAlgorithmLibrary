@@ -1,6 +1,7 @@
 package Template;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.function.Function;
 
 import Model.Individual;
@@ -8,7 +9,7 @@ import Model.Individual;
 public class ConcreteGeneticTemplate extends GeneticTemplate {
 
 	@Override
-	public Collection<Individual> Evaluate(Collection<Individual> population) {
+	public List<Individual> Evaluate(List<Individual> population) {
 		for(Individual i : population)
 		{
 			i.Evaluate();
@@ -17,13 +18,13 @@ public class ConcreteGeneticTemplate extends GeneticTemplate {
 	}
 
 	@Override
-	public Collection<Individual> CrossBeed(Collection<Individual> selectedPopulation) {
+	public List<Individual> CrossBeed(List<Individual> selectedPopulation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Collection<Individual> Mutate(Collection<Individual> selectedPopulation) {
+	public List<Individual> Mutate(List<Individual> selectedPopulation) {
 		// TODO Auto-generated method stub
 		return null;
 	}
