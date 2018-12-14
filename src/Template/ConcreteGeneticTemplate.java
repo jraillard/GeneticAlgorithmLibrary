@@ -1,38 +1,40 @@
 package Template;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
+import java.util.Random;
 
 import Model.Individual;
 
 public class ConcreteGeneticTemplate extends GeneticTemplate {
 
 	@Override
-	public List<Individual> Evaluate(List<Individual> population) {
+	protected List<Individual> Evaluate(List<Individual> population) {
 		for(Individual i : population)
 		{
-			i.Evaluate();
+			Thread t = new Thread(i);
+			t.start();
 		}
 		return population;		
 	}
 
 	@Override
-	public List<Individual> CrossBeed(List<Individual> selectedPopulation) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Individual> Mutate(List<Individual> selectedPopulation) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-	public void Replace() 
-	{
-		// TODO Auto-generated method stub
+	protected List<Individual> CrossBeedAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability) {
 		
+		List<Individual> newIndividuals = new ArrayList<>();
+		Random rand = new Random();
+		int tempRandValue = 0;
+				
+		for(int i=0; i< nbChildrenToGenerate; i++)
+		{
+			tempRandValue = rand.nextInt(100)+1;
+			//Probability to get mutation
+			if(1 >= tempRandValue && tempRandValue <= mutationProbability) 
+				newIndividuals.add(selectedPopulation.get(i).Mutate());	
+			else
+				newIndividuals.add(selectedPopulation.get(i).CrossBeed(selectedPopulation.get(i+1)));
+		}
+		
+		return newIndividuals;
 	}	
 }

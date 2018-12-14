@@ -1,11 +1,8 @@
 package Model;
 
-import java.util.Comparator;
-
-public abstract class Individual {
+public abstract class Individual implements Runnable{
 
 	protected float _fitness;
-	
 	
 	public void SetFitness(float f)
 	{
@@ -17,9 +14,11 @@ public abstract class Individual {
 		return _fitness;
 	}
 	
-	//defined by user by extending
-	public abstract Individual CreateIndividual();
+	//Make Evaluation Threadable
+	public void run() { Evaluate(); }
 	public abstract void Evaluate();
+	
+	public abstract Individual CreateIndividual();
 	public abstract Individual Mutate();
-	public abstract Individual[] CrossBeed(Individual indtoCross);
+	public abstract Individual CrossBeed(Individual indtoCross);
 }

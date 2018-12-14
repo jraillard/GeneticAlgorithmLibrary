@@ -1,6 +1,5 @@
 package Builder;
 
-import java.util.Collection;
 import java.util.List;
 
 import Model.Individual;

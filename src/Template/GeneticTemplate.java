@@ -1,10 +1,6 @@
 package Template;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.function.Function;
-
 import Builder.IPopulationBuilder;
 import Builder.PopulationBuilder;
 import GeneticEnum.ReplaceEnum;
@@ -30,21 +26,38 @@ public abstract class GeneticTemplate {
 		_populationBuilder = new PopulationBuilder();
 	}
 	
+	/***
+	 * Compute Genetic Algorithm
+	 * @param individualModel : individual model
+	 * @param populationCount : number of individual in the population
+	 * @param childrenToGenerate : number of children to generate at every iteration
+	 * @param selectionStrategy : selection strategy 
+	 * @param mutationProbability : probability to mutate (between 1% to 100%)
+	 * @param replaceStrategy : replace strategy
+	 * @param stopIteDuration : computing time
+	 * @param stopIteMax : number of iteration to compute
+	 * @return List<Individual> : optimised population 
+	 */
 	public List<Individual> Compute(
 			Individual individualModel,
 			int populationCount,
 			int childrenToGenerate,
 			SelectionEnum selectionStrategy,
+			int mutationProbability,
 			ReplaceEnum replaceStrategy,
-			Function<Individual[], Individual[]> crossBeedingFunc,
 			int stopIteDuration,
 			int stopIteMax)
 	{
-
-		//1. Population init
+		if(mutationProbability < 1 || mutationProbability > 100)
+		{
+			System.out.println("Please enter a mutation probability between 1 and 100");
+			return null;
+		}		
+		
+		//Population init
 		List<Individual> population = _populationBuilder.BuildPopulation(individualModel, populationCount);
 		
-		//2. Strategy init
+		//Strategy init
 		// TODO : à voir s'il ne faut pas gérer les switch ailleurs...
 		switch(selectionStrategy)
 		{
@@ -72,22 +85,46 @@ public abstract class GeneticTemplate {
 		
 		
 		int iterationCounter = 0;
-		List<Individual> selectedPop = null;
+		List<Individual> tempPop = null;
 		while(iterationCounter < stopIteMax)
 		{
+			//1. Evaluate
 			population = Evaluate(population);
-			
-			selectedPop = _selectionStrategy.Selection(population, childrenToGenerate+1);
-			
-			/* CrossBeed, Mutation and Replace */
+			//2. Selection
+			tempPop = _selectionStrategy.Selection(population, childrenToGenerate+1);
+			//3. CrossBeed/Mutation	on selectedPop	
+			tempPop = CrossBeedAndMutate(tempPop, childrenToGenerate, mutationProbability);
+			//4. Replacement
+			population = _replaceStrategy.Replace(tempPop, population);
 		}
 		
 		return population;
-	}
+	}	
 	
+	/***
+	 * Compute Genetic Algorithm with default mutation probability
+	 * @param individualModel : individual model
+	 * @param populationCount : number of individual in the population
+	 * @param childrenToGenerate : number of children to generate at every iteration
+	 * @param selectionStrategy : selection strategy 
+	 * @param replaceStrategy : replace strategy
+	 * @param stopIteDuration : computing time
+	 * @param stopIteMax : number of iteration to compute
+	 * @return List<Individual> : optimised population 
+	 */
+	public List<Individual> Compute(
+				Individual individualModel,
+				int populationCount,
+				int childrenToGenerate,
+				SelectionEnum selectionStrategy,
+				ReplaceEnum replaceStrategy,
+				int stopIteDuration,
+				int stopIteMax)
+	{
+		return Compute(individualModel, populationCount, childrenToGenerate, selectionStrategy, 3, 
+							replaceStrategy, stopIteDuration, stopIteMax);
+	}
 		
-	public abstract List<Individual> Evaluate(List<Individual> population);		
-	public abstract List<Individual> CrossBeed(List<Individual> selectedPopulation);
-	public abstract List<Individual> Mutate(List<Individual> selectedPopulation);	
-	public abstract List<Individual> Replace(List<Individual> newIndividuals, List<Individual> population);
+	protected abstract List<Individual> Evaluate(List<Individual> population);		
+	protected abstract List<Individual> CrossBeedAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability);		
 }
