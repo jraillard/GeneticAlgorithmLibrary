@@ -1,6 +1,7 @@
 package Template;
 
 import java.util.List;
+
 import Builder.IPopulationBuilder;
 import Builder.PopulationBuilder;
 import GeneticEnum.ReplaceEnum;
@@ -52,7 +53,6 @@ public abstract class GeneticTemplate {
 			SelectionEnum selectionStrategy,
 			int mutationProbability,
 			ReplaceEnum replaceStrategy,
-			int stopIteDuration,
 			int stopIteMax)
 	{
 		if(mutationProbability < 1 || mutationProbability > 100)
@@ -124,11 +124,9 @@ public abstract class GeneticTemplate {
 				int childrenToGenerate,
 				SelectionEnum selectionStrategy,
 				ReplaceEnum replaceStrategy,
-				int stopIteDuration,
 				int stopIteMax)
 	{
-		return Compute(individualModel, populationCount, childrenToGenerate, selectionStrategy, 3, 
-							replaceStrategy, stopIteDuration, stopIteMax);
+		return Compute(individualModel, populationCount, childrenToGenerate, selectionStrategy, 3, replaceStrategy,  stopIteMax);
 	}
 	
 	/***

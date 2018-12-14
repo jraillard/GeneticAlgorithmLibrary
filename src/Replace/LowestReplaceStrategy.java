@@ -1,7 +1,8 @@
 package Replace;
 
 import java.util.List;
-import Comparators.SortByFitnessDesc;
+
+import Comparators.SortByFitnessAsc;
 import Model.Individual;
 
 /***
@@ -14,7 +15,7 @@ public class LowestReplaceStrategy implements IReplaceStrategy{
 	public List<Individual> Replace(List<Individual> newIndividuals, List<Individual> population){
 				
 		//Order to put the lowest fitness at first
-		population.sort(new SortByFitnessDesc());
+		population.sort(new SortByFitnessAsc());
 		for(Individual i : newIndividuals)
 		{
 			population.remove(0);

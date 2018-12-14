@@ -1,6 +1,7 @@
 package Selection;
 
 import java.util.List;
+
 import Comparators.SortByFitnessAsc;
 import Model.Individual;
 

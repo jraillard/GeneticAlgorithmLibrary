@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import Comparators.SortByFitnessDesc;
 import Model.Individual;
 
 /***
@@ -20,6 +21,11 @@ public class RandomReplaceStrategy implements IReplaceStrategy {
 		boolean randomIdOk = false;
 		int populationLength = population.size();
 		int tempIdSelected = -1;
+		
+		// Put the better Fitness at first place
+		population.sort(new SortByFitnessDesc());
+		// Make it non-changeable
+		idsSelected.add(0);
 		
 		for(Individual i : newIndividuals)
 		{
