@@ -13,12 +13,19 @@ import Selection.ISelectionStrategy;
 import Selection.BestFitnessSelectionStrategy;
 import Selection.RandomSelectionStrategy;
 
+/***
+ * Genetic template algorithm
+ * @author Aloïs Bretaudeau, Florent Yvon, Julien Raillard, Mickael Meneux
+ */
 public abstract class GeneticTemplate {
 
 	protected ISelectionStrategy _selectionStrategy;
 	protected IReplaceStrategy _replaceStrategy;	
 	private IPopulationBuilder _populationBuilder;	
 	
+	/***
+	 * Constructor
+	 */
 	public GeneticTemplate()
 	{
 		_selectionStrategy = null;
@@ -36,7 +43,7 @@ public abstract class GeneticTemplate {
 	 * @param replaceStrategy : replace strategy
 	 * @param stopIteDuration : computing time
 	 * @param stopIteMax : number of iteration to compute
-	 * @return List<Individual> : optimised population 
+	 * @return Optimised population 
 	 */
 	public List<Individual> Compute(
 			Individual individualModel,
@@ -58,7 +65,6 @@ public abstract class GeneticTemplate {
 		List<Individual> population = _populationBuilder.BuildPopulation(individualModel, populationCount);
 		
 		//Strategy init
-		// TODO : à voir s'il ne faut pas gérer les switch ailleurs...
 		switch(selectionStrategy)
 		{
 			case BestFitness : 
@@ -100,7 +106,7 @@ public abstract class GeneticTemplate {
 		
 		return population;
 	}	
-	
+
 	/***
 	 * Compute Genetic Algorithm with default mutation probability
 	 * @param individualModel : individual model
@@ -110,7 +116,7 @@ public abstract class GeneticTemplate {
 	 * @param replaceStrategy : replace strategy
 	 * @param stopIteDuration : computing time
 	 * @param stopIteMax : number of iteration to compute
-	 * @return List<Individual> : optimised population 
+	 * @return Optimised population 
 	 */
 	public List<Individual> Compute(
 				Individual individualModel,
@@ -124,7 +130,20 @@ public abstract class GeneticTemplate {
 		return Compute(individualModel, populationCount, childrenToGenerate, selectionStrategy, 3, 
 							replaceStrategy, stopIteDuration, stopIteMax);
 	}
-		
+	
+	/***
+	 * Evaluate the population
+	 * @param population
+	 * @return
+	 */
 	protected abstract List<Individual> Evaluate(List<Individual> population);		
+	
+	/***
+	 * Create children by crossbeeding or mutation in the selected population
+	 * @param selectedPopulation : selected population
+	 * @param nbChildrenToGenerate : number of children to generate
+	 * @param mutationProbability : mutation probability
+	 * @return Childrens list
+	 */
 	protected abstract List<Individual> CrossBeedAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability);		
 }

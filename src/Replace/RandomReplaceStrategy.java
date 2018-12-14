@@ -6,6 +6,10 @@ import java.util.Random;
 
 import Model.Individual;
 
+/***
+ * Random strategy for replacement
+ * @author Aloïs Bretaudeau, Florent Yvon, Julien Raillard, Mickael Meneux
+ */
 public class RandomReplaceStrategy implements IReplaceStrategy {
 
 	@Override
@@ -34,5 +38,4 @@ public class RandomReplaceStrategy implements IReplaceStrategy {
 			
 		return population;		
 	}
-
 }

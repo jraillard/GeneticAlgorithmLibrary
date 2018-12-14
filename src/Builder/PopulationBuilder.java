@@ -5,6 +5,10 @@ import java.util.List;
 
 import Model.Individual;
 
+/***
+ * Population builder interface implementation
+ * @author Aloïs Bretaudeau, Florent Yvon, Julien Raillard, Mickael Meneux
+ */
 public class PopulationBuilder implements IPopulationBuilder {
 
 	@Override

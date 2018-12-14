@@ -1,10 +1,13 @@
 package Replace;
 
-import java.util.Comparator;
 import java.util.List;
-
+import Comparators.SortByFitnessDesc;
 import Model.Individual;
 
+/***
+ * Lowest strategy for replacement
+ * @author Aloïs Bretaudeau, Florent Yvon, Julien Raillard, Mickael Meneux
+ */
 public class LowestReplaceStrategy implements IReplaceStrategy{
 
 	@Override
@@ -19,12 +22,5 @@ public class LowestReplaceStrategy implements IReplaceStrategy{
 		}
 		
 		return population;		
-	}
-
-	class SortByFitnessDesc implements Comparator<Individual>{
-
-		public int compare(Individual a, Individual b) {
-			return (int) (b.GetFitness() - a.GetFitness());
-		}	
-	}
+	}	
 }

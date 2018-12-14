@@ -10,13 +10,15 @@ import Model.Individual;
  * Genetic template algorithm implementation
  * @author Aloïs Bretaudeau, Florent Yvon, Julien Raillard, Mickael Meneux
  */
-public class NonThreadedGeneticTemplate extends GeneticTemplate {
+public class ThreadedGeneticTemplate extends GeneticTemplate {
 
 	@Override
 	protected List<Individual> Evaluate(List<Individual> population) {
 		for(Individual i : population)
 		{
-			i.Evaluate();
+			// TODO : Manage threads
+			Thread t = new Thread(i);
+			t.start();
 		}
 		
 		return population;		

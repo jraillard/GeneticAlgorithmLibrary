@@ -6,6 +6,10 @@ import java.util.Random;
 
 import Model.Individual;
 
+/***
+ * Random strategy for selection
+ * @author Aloïs Bretaudeau, Florent Yvon, Julien Raillard, Mickael Meneux
+ */
 public class RandomSelectionStrategy implements ISelectionStrategy{
 
 	@Override
