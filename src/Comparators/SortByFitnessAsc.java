@@ -13,7 +13,7 @@ public class SortByFitnessAsc implements Comparator<Individual>{
 	/***
 	 * Compare method used by comparator
 	 */
-	public int compare(Individual a, Individual b) {
+	public int compare(Individual a, Individual b) {		
 		return (int) (a.GetFitness() - b.GetFitness());
 	}	
 }

@@ -1,7 +1,6 @@
 package Main;
 
 import Template.NonThreadedGeneticTemplate;
-import UserImplementation.MyIndividual;
 
 import java.util.List;
 
@@ -17,10 +16,10 @@ public class Main {
 		GeneticTemplate genetics = new NonThreadedGeneticTemplate();		
 		MyIndividual customIndividual = new MyIndividual();
 		
-		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 30, SelectionEnum.Random, ReplaceEnum.Random, 10);
+		List<Individual> populationGenerated = genetics.Compute(customIndividual, 10, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 3, -1);
 		for(Individual i : populationGenerated) {
 			
-			System.out.println(i.hashCode() + " : " + i.GetFitness());
+			System.out.println("Individual n°" + i.hashCode() + " - Fitness : " + i.GetFitness());			
 		}
 	}
 

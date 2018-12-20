@@ -14,8 +14,9 @@ public class LowestReplaceStrategy implements IReplaceStrategy{
 	@Override
 	public List<Individual> Replace(List<Individual> newIndividuals, List<Individual> population){
 				
-		//Order to put the lowest fitness at first
+		// Sort population to put the lowest fitness at first
 		population.sort(new SortByFitnessAsc());
+		
 		for(Individual i : newIndividuals)
 		{
 			population.remove(0);

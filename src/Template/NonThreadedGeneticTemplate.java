@@ -14,6 +14,7 @@ public class NonThreadedGeneticTemplate extends GeneticTemplate {
 
 	@Override
 	protected List<Individual> Evaluate(List<Individual> population) {
+		
 		for(Individual i : population)
 		{
 			i.Evaluate();
@@ -23,20 +24,20 @@ public class NonThreadedGeneticTemplate extends GeneticTemplate {
 	}
 
 	@Override
-	protected List<Individual> CrossBeedAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability) {
+	protected List<Individual> CrossAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability) {
 		
 		List<Individual> newIndividuals = new ArrayList<>();
 		Random rand = new Random();
 		int tempRandValue = 0;
 				
-		for(int i=0; i< nbChildrenToGenerate; i++)
+		for(int i=0; i<nbChildrenToGenerate; i++)
 		{
 			tempRandValue = rand.nextInt(100)+1;
 			//Probability to get mutation
 			if(1 >= tempRandValue && tempRandValue <= mutationProbability) 
 				newIndividuals.add(selectedPopulation.get(i).Mutate());	
 			else
-				newIndividuals.add(selectedPopulation.get(i).CrossBeed(selectedPopulation.get(i+1)));
+				newIndividuals.add(selectedPopulation.get(i).Crossing(selectedPopulation.get(i+1)));
 		}
 		
 		return newIndividuals;

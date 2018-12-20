@@ -18,21 +18,21 @@ public class RandomSelectionStrategy implements ISelectionStrategy{
 		List<Individual> selectedPopulation = new ArrayList<>();
 		List<Integer> idsSelected = new ArrayList<>();
 		Random rand = new Random();
-		boolean randomIdOk = false;
+		boolean randomIdKo = true;
 		int populationLength = population.size();
 		int tempIdSelected = -1;
 		
 		for(int i=0; i<nbParent; i++)
 		{
-			while(!randomIdOk)
+			while(randomIdKo)
 			{
 				tempIdSelected = rand.nextInt(populationLength);
-				randomIdOk &= idsSelected.contains(tempIdSelected);
+				randomIdKo &= idsSelected.contains(tempIdSelected);
 			}
 			
 			idsSelected.add(tempIdSelected);
 			selectedPopulation.add(population.get(tempIdSelected));
-			randomIdOk = false;
+			randomIdKo = true;
 		}		
 		
 		return selectedPopulation;

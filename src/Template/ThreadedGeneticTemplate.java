@@ -14,6 +14,7 @@ public class ThreadedGeneticTemplate extends GeneticTemplate {
 
 	@Override
 	protected List<Individual> Evaluate(List<Individual> population) {
+		
 		for(Individual i : population)
 		{
 			// TODO : Manage threads
@@ -25,7 +26,7 @@ public class ThreadedGeneticTemplate extends GeneticTemplate {
 	}
 
 	@Override
-	protected List<Individual> CrossBeedAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability) {
+	protected List<Individual> CrossAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability) {
 		
 		List<Individual> newIndividuals = new ArrayList<>();
 		Random rand = new Random();
@@ -38,7 +39,7 @@ public class ThreadedGeneticTemplate extends GeneticTemplate {
 			if(1 >= tempRandValue && tempRandValue <= mutationProbability) 
 				newIndividuals.add(selectedPopulation.get(i).Mutate());	
 			else
-				newIndividuals.add(selectedPopulation.get(i).CrossBeed(selectedPopulation.get(i+1)));
+				newIndividuals.add(selectedPopulation.get(i).Crossing(selectedPopulation.get(i+1)));
 		}
 		
 		return newIndividuals;

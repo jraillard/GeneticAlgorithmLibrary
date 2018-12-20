@@ -13,6 +13,7 @@ public class PopulationBuilder implements IPopulationBuilder {
 
 	@Override
 	public List<Individual> BuildPopulation(Individual model, int populationCount) {
+		
 		List<Individual> newPopulation = new ArrayList<Individual>();
 		
 		for(int i=0; i<populationCount; i++)
