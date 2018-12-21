@@ -1,6 +1,7 @@
 package Main;
 
 import Template.NonThreadedGeneticTemplate;
+import Template.ThreadedGeneticTemplate;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Main {
 		GeneticTemplate genetics = new NonThreadedGeneticTemplate();		
 		MyIndividual customIndividual = new MyIndividual();
 		
-		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 100, 3, 3);
+		List<Individual> populationGenerated = genetics.Compute(customIndividual, 1000000, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 1000, 3, 3);
 		
 		if(populationGenerated == null) { System.out.println("Processus failed"); return; }
 				

@@ -3,6 +3,8 @@ package Template;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import Model.Individual;
 
@@ -14,13 +16,20 @@ public class ThreadedGeneticTemplate extends GeneticTemplate {
 
 	@Override
 	protected List<Individual> Evaluate(List<Individual> population) {
+		// Instantiate thread pool manager
+		int threadPool = Runtime.getRuntime().availableProcessors();
+		ExecutorService executor = Executors.newFixedThreadPool(threadPool);
 		
 		for(Individual i : population)
 		{
-			// TODO : Manage threads
-			Thread t = new Thread(i);
-			t.start();
+			// Create asynchronous task
+			executor.execute(i);
 		}
+		
+		// Execute tasks
+		executor.shutdown();
+		
+		while(!executor.isTerminated()) { }
 		
 		return population;		
 	}
