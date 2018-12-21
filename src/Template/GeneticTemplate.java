@@ -1,6 +1,5 @@
 package Template;
 
-import java.util.Arrays;
 import java.util.List;
 
 import Builder.IPopulationBuilder;
