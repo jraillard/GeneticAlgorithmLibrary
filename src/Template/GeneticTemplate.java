@@ -22,10 +22,12 @@ import Selection.RandomSelectionStrategy;
  */
 public abstract class GeneticTemplate {
 
-	protected ISelectionStrategy _selectionStrategy;
-	protected IReplaceStrategy _replaceStrategy;	
+	private ISelectionStrategy _selectionStrategy;
+	private IReplaceStrategy _replaceStrategy;	
 	private IPopulationBuilder _populationBuilder;	
 	
+	private boolean _stopIteEvolutionDefined;
+	private double[] _populationFitnessEvolution;
 	/***
 	 * Constructor
 	 */
@@ -34,6 +36,8 @@ public abstract class GeneticTemplate {
 		_selectionStrategy = null;
 		_replaceStrategy = null;
 		_populationBuilder = new PopulationBuilder();
+		_stopIteEvolutionDefined = false;
+		_populationFitnessEvolution = null;
 	}
 	
 	/***
@@ -58,54 +62,15 @@ public abstract class GeneticTemplate {
 			int stopIteMax, 
 			int stopIteEvolution)
 	{
-		if(mutationProbability < 1 || mutationProbability > 100)
-		{
-			System.out.println("Please enter a mutation probability between 1 and 100");
-			return null;
-		}	
-		
-		if(childrenToGenerate >= populationCount)
-		{
-			System.out.println("Please enter a number of children generated lower than the population");
-			return null;
-		}	
-		
-		boolean stopIteEvolutionDefined = (stopIteEvolution > 0 && stopIteEvolution < stopIteMax);
-		double[] populationFitnessEvolution = null;
-		if(stopIteEvolutionDefined) populationFitnessEvolution = new double[stopIteEvolution];
+		if(!CheckEntries(populationCount, childrenToGenerate, mutationProbability, stopIteEvolution, stopIteMax,  selectionStrategy, replaceStrategy))
+			System.out.println("Entries uncorrect");		
 		
 		//Population init
 		List<Individual> population = _populationBuilder.BuildPopulation(individualModel, populationCount);
 		
-		//Strategy init
-		switch(selectionStrategy)
-		{
-			case BestFitness : 
-				_selectionStrategy = new BestFitnessSelectionStrategy();
-				break;
-			case Random : 
-				_selectionStrategy = new RandomSelectionStrategy();
-				break;
-			default : 
-				return population;				
-		}
-		
-		switch(replaceStrategy)
-		{
-			case Lowest : 
-				_replaceStrategy = new LowestReplaceStrategy();
-				break;
-			case Random : 
-				_replaceStrategy = new RandomReplaceStrategy();
-				break;
-			default :
-					return population;		
-		}
-		
-		
-		int iterationCounter = 0;
+		int iterationCounter = 1;
 		List<Individual> tempPop = null;
-		while(iterationCounter < stopIteMax)
+		while(iterationCounter <= stopIteMax)
 		{
 			//1. Evaluate
 			population = Evaluate(population);
@@ -117,14 +82,14 @@ public abstract class GeneticTemplate {
 			population = _replaceStrategy.Replace(tempPop, population);
 			
 			// Manage computing stop if population don't evolve anymore
-			if(stopIteEvolutionDefined)
+			if(_stopIteEvolutionDefined)
 			{
-				// compute population mean fitness 
-				populationFitnessEvolution[iterationCounter] = MedianPopulationFitness(population);
+				// Compute population mean fitness 
+				_populationFitnessEvolution[(iterationCounter % stopIteEvolution)] = MedianPopulationFitness(population);
 				if(iterationCounter % stopIteEvolution == 0)
 				{					
-					if(!IsPopulationEvolving(populationFitnessEvolution)) return population;
-					else populationFitnessEvolution = new double[stopIteEvolution];
+					if(!IsPopulationEvolving()) return population;
+					else _populationFitnessEvolution = new double[stopIteEvolution];
 				}				
 			}
 			
@@ -169,10 +134,15 @@ public abstract class GeneticTemplate {
 	 * @param selectedPopulation : selected population
 	 * @param nbChildrenToGenerate : number of children to generate
 	 * @param mutationProbability : mutation probability
-	 * @return Childrens list
+	 * @return Children list
 	 */
 	protected abstract List<Individual> CrossAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability);		
 	
+	/**
+	 * Compute the population median value
+	 * @param population
+	 * @return Median value
+	 */
 	private double MedianPopulationFitness(List<Individual> population)
 	{
 		population.sort(new SortByFitnessAsc());
@@ -184,13 +154,82 @@ public abstract class GeneticTemplate {
 		    return (double) population.get(populationSize/2).GetFitness();
 	}
 	
-	private boolean IsPopulationEvolving(double[] medians)
+	/**
+	 * Determine if the population evolved 
+	 * @return Yes / No
+	 */
+	private boolean IsPopulationEvolving()
 	{
 		// if median evolve less than 5% => consider that population don't evolve anymore
 		double threshold = 1.05f;
 		
-		if(medians[medians.length] /  medians[0] < threshold) 
+		if(_populationFitnessEvolution[_populationFitnessEvolution.length-1] / _populationFitnessEvolution[0] < threshold) 
 			return false;
+		
+		return true;		
+	}
+	
+	/**
+	 * Check the content of the compute method entries
+	 * @param populationCount : number of individual in the population
+	 * @param childrenToGenerate : number of children to generate at every iteration
+	 * @param mutationProbability
+	 * @param stopIteMax: number of iteration to compute
+ 	 * @param stopIteEvolution : number of iteration to do if population don't evolve anymore
+	 * @param selectionStrategy : selection strategy 
+	 * @param replaceStrategy : replace strategy
+	 * @return Entries validity
+	 */
+	private boolean CheckEntries(int populationCount, int childrenToGenerate, int mutationProbability, int stopIteEvolution, int stopIteMax, 
+			SelectionEnum selectionStrategy, ReplaceEnum replaceStrategy) {
+
+		// Check mutation probability value 
+		if(mutationProbability < 1 || mutationProbability > 100) {
+			System.out.println("Please enter a mutation probability between 1 and 100");
+			return false;
+		}	
+		
+		// Check children to generate number to be lower than individual number
+		if(childrenToGenerate >= populationCount) {
+			System.out.println("Please enter a number of children generated lower than the population");
+			return false;
+		}	
+		
+		// Check iteration to check evolution to be lower iteration number
+		if(stopIteEvolution >= stopIteMax) {
+			System.out.println("StopIteEvolution must be lower than StopIteMax");
+			return false;
+		}else if(stopIteEvolution > 0)  { 
+			_stopIteEvolutionDefined = true; 
+			_populationFitnessEvolution = new double[stopIteEvolution];				
+		}
+		
+		// Strategy init
+		switch(selectionStrategy)
+		{
+			case BestFitness : 
+				_selectionStrategy = new BestFitnessSelectionStrategy();
+				break;
+			case Random : 
+				_selectionStrategy = new RandomSelectionStrategy();
+				break;
+			default : 
+				System.out.println("Please define an available selection strategy");
+				return false;				
+		}
+		
+		switch(replaceStrategy)
+		{
+			case Lowest : 
+				_replaceStrategy = new LowestReplaceStrategy();
+				break;
+			case Random : 
+				_replaceStrategy = new RandomReplaceStrategy();
+				break;
+			default: 
+				System.out.println("Please define an available replace strategy");
+				return false;	
+		}
 		
 		return true;		
 	}

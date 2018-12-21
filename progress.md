@@ -42,3 +42,9 @@ Project progress file
                                             TODO : make copy of population before doing any operation otherwise it will compromise the algorithm efficiency when combining random strategy with another one
     
     Start computing stop when population stop evolving
+
+## 21/12/2018
+
+    Manage computing stop if population don't evolve anymore
+
+    CheckEntries method to check Compute() entries
