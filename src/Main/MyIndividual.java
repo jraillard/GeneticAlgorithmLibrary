@@ -4,6 +4,11 @@ import java.security.SecureRandom;
 
 import Model.Individual;
 
+/**
+ * Individual sample implementation (Best individual => fitness = 7.0) 
+ * @author usrlocal
+ *
+ */
 public class MyIndividual extends Individual{
 
 	private byte _individualData = 0;
@@ -47,17 +52,15 @@ public class MyIndividual extends Individual{
 	
 	@Override
 	public void Evaluate() {
-		/*
-		 * This code is contributed by Anshika Goyal.
-		 * https://www.geeksforgeeks.org/count-set-bits-in-an-integer/
-		 */	
+
+		// Bit number (between 0 and 32)
+		_fitness = Integer.bitCount(_individualData);
 		
-		// The fitness is defined by number of 1 in the byte
-        while (_individualData > 0) 
-        { 
-            _fitness += _individualData & 1; 
-            _individualData >>= 1; 
-        } 		
+		if(_individualData < 0)
+        {
+			// Must retrieve 1 for bit sign 
+        	_fitness = (31 - _fitness);
+        }	
 	}	
 
 	@Override

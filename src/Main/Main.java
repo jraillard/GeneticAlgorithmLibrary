@@ -17,13 +17,13 @@ public class Main {
 		GeneticTemplate genetics = new NonThreadedGeneticTemplate();		
 		MyIndividual customIndividual = new MyIndividual();
 		
-		List<Individual> populationGenerated = genetics.Compute(customIndividual, 1000000, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 1000, 3, 3);
+		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 1, -1, -1);
 		
 		if(populationGenerated == null) { System.out.println("Processus failed"); return; }
 				
 		for(Individual i : populationGenerated) {
-			
-			System.out.println("Individual n°" + i.hashCode() + " - Fitness : " + i.GetFitness());			
+			MyIndividual tempi = (MyIndividual) i;
+			System.out.println("Individual n°" + i.hashCode() + " - Data : " + tempi.GetIndividualData() +" - Fitness : " + i.GetFitness());			
 		}
 	}
 
