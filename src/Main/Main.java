@@ -16,10 +16,10 @@ public class Main {
 		GeneticTemplate genetics = new NonThreadedGeneticTemplate();		
 		MyIndividual customIndividual = new MyIndividual();
 		
-		List<Individual> populationGenerated = genetics.Compute(customIndividual, 10, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 10, 3);
+		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 100, 3, 3);
 		
 		if(populationGenerated == null) { System.out.println("Processus failed"); return; }
-		
+				
 		for(Individual i : populationGenerated) {
 			
 			System.out.println("Individual n°" + i.hashCode() + " - Fitness : " + i.GetFitness());			

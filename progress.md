@@ -48,3 +48,10 @@ Project progress file
     Manage computing stop if population don't evolve anymore
 
     CheckEntries method to check Compute() entries
+
+    previous todo cancelled => quiet useless
+
+    bestfitness evolution stop condition
+
+    RAF (BONUS) => concrete genetic template threaded version  
+                => TUs 

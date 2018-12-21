@@ -27,7 +27,10 @@ public abstract class GeneticTemplate {
 	private IPopulationBuilder _populationBuilder;	
 	
 	private boolean _stopIteEvolutionDefined;
+	private boolean _stopIteBestFitnessDefined;
 	private double[] _populationFitnessEvolution;
+	private Individual[] _populationBestFitnessEvolution;
+	
 	/***
 	 * Constructor
 	 */
@@ -37,7 +40,9 @@ public abstract class GeneticTemplate {
 		_replaceStrategy = null;
 		_populationBuilder = new PopulationBuilder();
 		_stopIteEvolutionDefined = false;
+		_stopIteBestFitnessDefined = false;
 		_populationFitnessEvolution = null;
+		_populationBestFitnessEvolution = null;
 	}
 	
 	/***
@@ -50,6 +55,7 @@ public abstract class GeneticTemplate {
 	 * @param replaceStrategy : replace strategy
 	 * @param stopIteMax : number of iteration to compute
  	 * @param stopIteEvolution : number of iteration to do if population don't evolve anymore
+ 	 * @param stopIteBestFitness : number of iteration to do if best fitness don't change
 	 * @return Optimized population 
 	 */
 	public List<Individual> Compute(
@@ -60,10 +66,11 @@ public abstract class GeneticTemplate {
 			int mutationProbability,
 			ReplaceEnum replaceStrategy,
 			int stopIteMax, 
-			int stopIteEvolution)
+			int stopIteEvolution,
+			int stopIteBestFitnessChanged)
 	{
-		if(!CheckEntries(populationCount, childrenToGenerate, mutationProbability, stopIteEvolution, stopIteMax,  selectionStrategy, replaceStrategy))
-			System.out.println("Entries uncorrect");		
+		if(!CheckEntries(populationCount, childrenToGenerate, mutationProbability, stopIteBestFitnessChanged, stopIteEvolution, stopIteMax, 
+				selectionStrategy, replaceStrategy)) { System.out.println("Entries uncorrect"); }		
 		
 		//Population init
 		List<Individual> population = _populationBuilder.BuildPopulation(individualModel, populationCount);
@@ -88,9 +95,29 @@ public abstract class GeneticTemplate {
 				_populationFitnessEvolution[(iterationCounter % stopIteEvolution)] = MedianPopulationFitness(population);
 				if(iterationCounter % stopIteEvolution == 0)
 				{					
-					if(!IsPopulationEvolving()) return population;
+					if(!IsPopulationEvolving())
+					{
+						System.out.println("Iteration n°"+iterationCounter+" population doesn't evolve anymore");
+						return population;
+					}
 					else _populationFitnessEvolution = new double[stopIteEvolution];
 				}				
+			}
+			
+			// Manage computing stop if best fitness individual don't change
+			if(_stopIteBestFitnessDefined)
+			{
+				// Get Best Fitness individual
+				_populationFitnessEvolution[(iterationCounter % stopIteBestFitnessChanged)] = PopulationBestFitness(population);
+				if(iterationCounter % stopIteBestFitnessChanged == 0)
+				{					
+					if(!IsPopulationBestFitnessChanged())
+					{
+						System.out.println("Iteration n°"+iterationCounter+" best fitness doesn't change anymore");
+						return population;
+					}
+					else _populationBestFitnessEvolution = new Individual[stopIteBestFitnessChanged];
+				}		
 			}
 			
 			iterationCounter++;
@@ -108,6 +135,7 @@ public abstract class GeneticTemplate {
 	 * @param replaceStrategy : replace strategy
 	 * @param stopIteMax : number of iteration to compute
  	 * @param stopIteEvolution : number of iteration to do if population don't evolve anymore
+ 	 * @param stopIteBestFitness : number of iteration to do if best fitness don't change
 	 * @return Optimized population 
 	 */
 	public List<Individual> Compute(
@@ -117,9 +145,10 @@ public abstract class GeneticTemplate {
 				SelectionEnum selectionStrategy,
 				ReplaceEnum replaceStrategy,
 				int stopIteMax,
-				int stopIteEvolution)
+				int stopIteEvolution,
+				int stopIteBestFitness)
 	{
-		return Compute(individualModel, populationCount, childrenToGenerate, selectionStrategy, 3, replaceStrategy,  stopIteMax, stopIteEvolution);
+		return Compute(individualModel, populationCount, childrenToGenerate, selectionStrategy, 3, replaceStrategy,  stopIteMax, stopIteEvolution, stopIteBestFitness);
 	}
 	
 	/***
@@ -170,6 +199,40 @@ public abstract class GeneticTemplate {
 	}
 	
 	/**
+	 * Get the best fitness individual
+	 * @param population
+	 * @return Best fitness individual
+	 */ 
+	private double PopulationBestFitness(List<Individual> population)
+	{
+		Individual tempInd = population.get(0);
+		
+		for(Individual i : population)
+		{
+			if(i.GetFitness() >= tempInd.GetFitness()) 
+				tempInd = i; 
+		}
+		
+		return tempInd.GetFitness();
+	}
+
+	/**
+	 * Determine if the best fitness individual changed
+	 * @return Yes / No
+	 */
+	private boolean IsPopulationBestFitnessChanged()
+	{		
+		Individual tempInd = _populationBestFitnessEvolution[0];		
+		
+		for(Individual i : _populationBestFitnessEvolution)
+		{
+			if(tempInd != i) return false;
+		}
+		
+		return true;		
+	}
+	
+	/**
 	 * Check the content of the compute method entries
 	 * @param populationCount : number of individual in the population
 	 * @param childrenToGenerate : number of children to generate at every iteration
@@ -180,7 +243,7 @@ public abstract class GeneticTemplate {
 	 * @param replaceStrategy : replace strategy
 	 * @return Entries validity
 	 */
-	private boolean CheckEntries(int populationCount, int childrenToGenerate, int mutationProbability, int stopIteEvolution, int stopIteMax, 
+	private boolean CheckEntries(int populationCount, int childrenToGenerate, int mutationProbability, int stopIteBestFitness, int stopIteEvolution, int stopIteMax, 
 			SelectionEnum selectionStrategy, ReplaceEnum replaceStrategy) {
 
 		// Check mutation probability value 
@@ -195,13 +258,22 @@ public abstract class GeneticTemplate {
 			return false;
 		}	
 		
-		// Check iteration to check evolution to be lower iteration number
+		// Check stopIteEvolution to be lower than stopIteMax and positive
 		if(stopIteEvolution >= stopIteMax) {
 			System.out.println("StopIteEvolution must be lower than StopIteMax");
 			return false;
 		}else if(stopIteEvolution > 0)  { 
 			_stopIteEvolutionDefined = true; 
 			_populationFitnessEvolution = new double[stopIteEvolution];				
+		}
+		
+		// Check stopIteBestFitness to be lower than stopIteMax and positive 
+		if(stopIteBestFitness >= stopIteMax) {
+			System.out.println("StopIteBestFitness must be lower than StopIteMax");
+			return false;
+		}else if(stopIteBestFitness > 0)  { 
+			_stopIteBestFitnessDefined = true; 
+			_populationBestFitnessEvolution = new Individual[stopIteBestFitness];				
 		}
 		
 		// Strategy init
