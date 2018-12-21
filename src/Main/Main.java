@@ -22,9 +22,7 @@ public class Main {
 		if(populationGenerated == null) { System.out.println("Processus failed"); return; }
 				
 		for(Individual i : populationGenerated) {
-			MyIndividual tempi = (MyIndividual) i;
-			System.out.println("Individual n°" + i.hashCode() + " - Data : " + tempi.GetIndividualData() +" - Fitness : " + i.GetFitness());			
+			System.out.println("Individual n°" + i.hashCode() + " - Fitness : " + i.GetFitness());			
 		}
 	}
-
 }

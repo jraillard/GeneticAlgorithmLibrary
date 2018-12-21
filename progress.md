@@ -53,5 +53,8 @@ Project progress file
 
     bestfitness evolution stop condition
 
-    RAF (BONUS) => concrete genetic template threaded version  
-                => TUs 
+    concrete genetic template threaded version  
+
+    MyIndividual Evaluation edit
+    
+    RAF (BONUS) => TUs             

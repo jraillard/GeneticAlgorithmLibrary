@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 import Model.Individual;
 
 /**
- * Individual sample implementation (Best individual => fitness = 7.0) 
+ * Individual sample implementation (Best individual = Individual with the biggest 1-bit number => fitness = 7.0) 
  * @author usrlocal
  *
  */
