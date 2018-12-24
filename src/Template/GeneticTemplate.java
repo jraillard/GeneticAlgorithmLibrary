@@ -177,7 +177,7 @@ public abstract class GeneticTemplate {
 		int populationSize = population.size();
 		
 		if (populationSize % 2 == 0)
-		    return ((double) population.get(populationSize/2).GetFitness() + (double) population.get(populationSize/2 - 1).GetFitness()/2);
+		    return (((double) population.get(populationSize/2).GetFitness() + (double) population.get(populationSize/2 - 1).GetFitness())/2);
 		else
 		    return (double) population.get(populationSize/2).GetFitness();
 	}

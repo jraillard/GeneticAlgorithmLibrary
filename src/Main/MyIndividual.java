@@ -6,11 +6,13 @@ import Model.Individual;
 
 /**
  * Individual sample implementation (Best individual = Individual with the biggest 1-bit number => fitness = 7.0) 
- * @author usrlocal
- *
+ * @author Aloïs Bretaudeau, Florent Yvon, Julien Raillard, Mickael Meneux
  */
 public class MyIndividual extends Individual{
 
+	/**
+	 * Data sample
+	 */
 	private byte _individualData = 0;
 	
 	/**
@@ -19,7 +21,7 @@ public class MyIndividual extends Individual{
 	public MyIndividual() {}
 	
 	/**
-	 *  Constructor called by CreateIndividual() to generate a new individual
+	 * Constructor called by CreateIndividual() to generate a new individual
 	 * @param data : Individual data
 	 */
 	public MyIndividual(byte data)	{

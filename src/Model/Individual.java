@@ -6,6 +6,9 @@ package Model;
  */
 public abstract class Individual implements Runnable{
 
+	/**
+	 * Individual evaluation score
+	 */
 	protected float _fitness;
 	
 	/**
