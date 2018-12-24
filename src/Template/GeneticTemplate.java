@@ -69,7 +69,10 @@ public abstract class GeneticTemplate {
 			int stopIteBestFitnessChanged)
 	{
 		if(!CheckEntries(populationCount, childrenToGenerate, mutationProbability, stopIteBestFitnessChanged, stopIteEvolution, stopIteMax, 
-				selectionStrategy, replaceStrategy)) { System.out.println("Entries uncorrect"); }		
+				selectionStrategy, replaceStrategy)) { 
+			System.out.println("Entries uncorrect");
+			return null;
+		}		
 		
 		//Population init
 		List<Individual> population = _populationBuilder.BuildPopulation(individualModel, populationCount);

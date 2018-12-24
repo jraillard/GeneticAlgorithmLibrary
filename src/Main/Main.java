@@ -17,7 +17,7 @@ public class Main {
 		GeneticTemplate genetics = new NonThreadedGeneticTemplate();		
 		MyIndividual customIndividual = new MyIndividual();
 		
-		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 50, -1, -1);
+		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 50, 3, 3);
 		
 		if(populationGenerated == null) { System.out.println("Processus failed"); return; }
 				

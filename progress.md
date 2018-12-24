@@ -57,4 +57,15 @@ Project progress file
 
     MyIndividual Evaluation edit
     
-    RAF (BONUS) => TUs             
+    RAF (BONUS) => TUs       
+
+## 24/12/2018
+
+    File indent correct
+
+    Median compute in Genetic Template correct
+
+    Confluent tests => 
+        case implemented seems to confluent to the best value (maybe too fast) : 100 individuals population , 50 iterations => best population
+        never go to case when population don't evolve anymore
+        never go to case when best fitness individual change
