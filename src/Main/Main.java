@@ -29,9 +29,9 @@ public class Main {
 		int populationSize = populationGenerated.size();
 		
 		if (populationSize % 2 == 0)
-			System.out.println(((double) populationGenerated.get(populationSize/2).GetFitness() + 
+			System.out.println("Mediane : " + ((double) populationGenerated.get(populationSize/2).GetFitness() + 
 																	(double) populationGenerated.get(populationSize/2 - 1).GetFitness())/2);
 		else
-			System.out.println((double) populationGenerated.get(populationSize/2).GetFitness());
+			System.out.println("Mediane : " + (double) populationGenerated.get(populationSize/2).GetFitness());
 	}
 }
