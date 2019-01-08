@@ -14,17 +14,22 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		// Data model and template instantiating
 		GeneticTemplate genetics = new NonThreadedGeneticTemplate();		
 		MyIndividual customIndividual = new MyIndividual();
 		
+		// Algorithm compute
 		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 50, 3, 3);
 		
 		if(populationGenerated == null) { System.out.println("Processus failed"); return; }
-				
+		
+		// Population display
+		System.out.println("\r\n********************************************\r\n");
 		for(Individual i : populationGenerated) {
 			System.out.println("Individual n°" + i.hashCode() + " - Fitness : " + i.GetFitness());			
 		}
 		
+		// Statistics display
 		System.out.println("\r\n********************************************\r\n");
 		int populationSize = populationGenerated.size();
 		
