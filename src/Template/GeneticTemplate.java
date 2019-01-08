@@ -1,6 +1,8 @@
 package Template;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import Builder.IPopulationBuilder;
 import Builder.PopulationBuilder;
@@ -167,7 +169,24 @@ public abstract class GeneticTemplate {
 	 * @param mutationProbability : mutation probability
 	 * @return Children list
 	 */
-	protected abstract List<Individual> CrossAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability);		
+	private List<Individual> CrossAndMutate(List<Individual> selectedPopulation, int nbChildrenToGenerate, int mutationProbability)
+	{
+		List<Individual> newIndividuals = new ArrayList<>();
+		Random rand = new Random();
+		int tempRandValue = 0;
+				
+		for(int i=0; i< nbChildrenToGenerate; i++)
+		{
+			tempRandValue = rand.nextInt(100)+1;
+			//Probability to get mutation
+			if(1 >= tempRandValue && tempRandValue <= mutationProbability) 
+				newIndividuals.add(selectedPopulation.get(i).Mutate());	
+			else
+				newIndividuals.add(selectedPopulation.get(i).Crossing(selectedPopulation.get(i+1)));
+		}
+		
+		return newIndividuals;
+	}
 	
 	/**
 	 * Compute the population median value
