@@ -19,7 +19,7 @@ public class Main {
 		MyIndividual customIndividual = new MyIndividual();
 		
 		// Algorithm compute
-		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 3, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 50, 3, 3);
+		List<Individual> populationGenerated = genetics.Compute(customIndividual, 100, 20, SelectionEnum.BestFitness , ReplaceEnum.Lowest, 50, 3, 3);
 		
 		if(populationGenerated == null) { System.out.println("Processus failed"); return; }
 		
