@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="Builder" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Builder" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="887" y="432"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="Comparators" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Comparators" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="634" y="116"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="GeneticEnum" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/GeneticEnum" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="743" y="576"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="Main" project="GeneticAlgorithmLibrary" file="/GeneticAlgorithmLibrary/src/Main" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="167" y="139"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="Model" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="401" y="556"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="Replace" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Replace" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="949" y="255"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="Selection" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Selection" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="420" y="95"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="8" language="java" name="StopConditions" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/StopConditions" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="939" y="134"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="9" language="java" name="Template" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Template" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="171" y="299"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <dependency id="10">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="11">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="12">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="13">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="14">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="15">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="16">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="19">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="21">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="25">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="26">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="27">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

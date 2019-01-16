@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="Builder" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Builder" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="308" width="298" x="1511" y="611"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="2" language="java" name="Builder.PopulationBuilder" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Builder/PopulationBuilder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1660" y="725"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="Builder.IPopulationBuilder" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Builder/IPopulationBuilder.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1660" y="855"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="4" language="java" name="Comparators" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Comparators" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="187" width="465" x="895" y="20"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="5" language="java" name="Comparators.SortByFitnessDesc" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Comparators/SortByFitnessDesc.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1013" y="133"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="Comparators.SortByFitnessAsc" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Comparators/SortByFitnessAsc.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1234" y="133"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="7" language="java" name="GeneticEnum" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/GeneticEnum" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="186" width="413" x="1512" y="962"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <enumeration id="8" language="java" name="GeneticEnum.ReplaceEnum" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/GeneticEnum/ReplaceEnum.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1622" y="1080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="9" language="java" name="GeneticEnum.SelectionEnum" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/GeneticEnum/SelectionEnum.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1809" y="1080"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <package id="10" language="java" name="Main" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Main" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="314" width="360" x="33" y="364"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="11" language="java" name="Main.Main" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Main/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="110" y="506"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="Main.MyIndividual" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Main/MyIndividual.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="278" y="524"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="13" language="java" name="Model" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Model" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="301" width="264" x="33" y="742"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="14" language="java" name="Model.Individual" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Model/Individual.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="166" y="911"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="15" language="java" name="Replace" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Replace" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="298" width="715" x="1224" y="274"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="16" language="java" name="Replace.RandomReplaceStrategy" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Replace/RandomReplaceStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1410" y="382"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="17" language="java" name="Replace.IReplaceStrategy" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Replace/IReplaceStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1579" y="512"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="18" language="java" name="Replace.LowestReplaceStrategy" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Replace/LowestReplaceStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1748" y="382"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="19" language="java" name="Selection" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Selection" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="324" width="616" x="254" y="12"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="20" language="java" name="Selection.BestFitnessSelectionStrategy" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Selection/BestFitnessSelectionStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="415" y="143"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="21" language="java" name="Selection.ISelectionStrategy" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Selection/ISelectionStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="556" y="273"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="22" language="java" name="Selection.RandomSelectionStrategy" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Selection/RandomSelectionStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="696" y="143"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="23" language="java" name="Template" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Template" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="440" width="583" x="519" y="378"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="24" language="java" name="Template.GeneticTemplate" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Template/GeneticTemplate.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="831" y="552"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="Template.ThreadedGeneticTemplate" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Template/ThreadedGeneticTemplate.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="666" y="736"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="Template.NonThreadedGeneticTemplate" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/Template/NonThreadedGeneticTemplate.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="930" y="736"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="27" language="java" name="StopConditions" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/StopConditions" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="462" width="1019" x="446" y="865"/>    
+    <display autosize="false" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="28" language="java" name="StopConditions.StopConditionManager" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/StopConditions/StopConditionManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="768" y="1012"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="StopConditions.IteMaxStopCondition" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/StopConditions/IteMaxStopCondition.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="592" y="1208"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="StopConditions.ChangeBestFitnessStopCondition" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/StopConditions/ChangeBestFitnessStopCondition.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="907" y="1208"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="StopConditions.PopulationEvolutionStopCondition" 
+    project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/StopConditions/PopulationEvolutionStopCondition.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1275" y="1207"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="StopConditions.StopCondition" project="GeneticAlgorithmLibrary" 
+    file="/GeneticAlgorithmLibrary/src/StopConditions/StopCondition.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1211" y="1005"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="33">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="34" name="_selectionStrategy">        
+        <position height="18" width="98" x="509" y="339"/>      
+      </attribute>      
+      <multiplicity id="35" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="36">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="17"/>  
+  </realization>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
+  <realization id="39">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <association id="40">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="41" name="_stopConditions"/>      
+      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="32" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="43">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="44" name="_manager"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="46">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <generalization id="47">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <realization id="48">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="17"/>  
+  </realization>  
+  <generalization id="49">    
+    <bendpoint x="724" y="1109"/>    
+    <bendpoint x="1003" y="1106"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
+  <association id="50">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="51" name="_currentPopulation"/>      
+      <multiplicity id="52" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="53">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <association id="54">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="55" name="_populationBuilder"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <generalization id="58">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
+  <association id="59">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="60" name="_replaceStrategy"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="63" name="_stopConditionManager"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
